@@ -12,6 +12,9 @@ const trash = document.querySelector(".fa-trash-can")
 let quantity = document.querySelector(".quantity")
 const products = document.querySelector(".products")
 const product = document.querySelector(".product")
+const discountedPrice = document.querySelector("#discounted-price")
+
+const productPrice = document.querySelector("#product-price")
 
 
 console.log(bin);
@@ -30,12 +33,14 @@ products.addEventListener("click", (e) =>{
   console.log(e.target);
   if(e.target.classList.contains("fa-plus")){
     e.target.previousElementSibling.innerText++;
+    calculateProduct(e.target)
   }
 
 
   else if(e.target.classList.contains("fa-minus")){
     if(e.target.nextElementSibling.innerText > 1){
       e.target.nextElementSibling.innerText--;
+      calculateProduct(e.target)
     }
     
   }
@@ -44,4 +49,29 @@ products.addEventListener("click", (e) =>{
   }
 
 })
+
+
+
+const calculateProduct = (e) =>{
+  // product-price = quantity * discounted-price
+let disPri 
+ disPri  = e.closest(".product").querySelector("#discounted-price")
+
+ console.log(disPri);
+
+let qua = e.closest(".product").querySelector(".quantity")
+
+let proPri = e.closest(".product").querySelector("#product-price")
+
+
+
+  proPri.innerText = qua.innerText * disPri.innerText
+  console.log(proPri);
+  return proPri
+
+
+}
+
+
+
 
