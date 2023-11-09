@@ -15,6 +15,7 @@ const product = document.querySelector(".product")
 const discountedPrice = document.querySelector("#discounted-price")
 
 const productPrice = document.querySelector("#product-price")
+const selectedPrice = document.querySelector("#selected-price")
 
 
 console.log(bin);
@@ -51,6 +52,7 @@ products.addEventListener("click", (e) =>{
 })
 
 
+let totalProPri = 1.750;
 
 const calculateProduct = (e) =>{
   // product-price = quantity * discounted-price
@@ -65,12 +67,38 @@ let proPri = e.closest(".product").querySelector("#product-price")
 
 
 
-  proPri.innerText = qua.innerText * disPri.innerText
+
+  proPri.innerText = qua.innerText * disPri.innerText;
+
+  
+
+  console.log(totalProPri);
   console.log(proPri);
-  return proPri
-
-
+  
+  calculateSelectedProduct(totalProPri);
+  return totalProPri;
 }
+
+let SHIPPING = 30;
+let TAX = 1.18;
+
+const calculateSelectedProduct = (totalProPri) =>{
+  // product-price, shipping, tax, total, product-toplam, total toplam
+
+  let SHIPPING = 30;
+  let TAX = 1.18;
+  let FREE_SHIPPING_LIMIT = 3000;
+
+ let total = document.querySelectorAll("#product-price")
+ console.log(total);
+ let newTotal = [...total].reduce((sum, item) =>sum +Number(item.textContent),0)
+ console.log(newTotal);
+
+ console.log(newTotal);
+  
+}
+
+
 
 
 
