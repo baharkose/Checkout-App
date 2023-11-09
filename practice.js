@@ -16,6 +16,10 @@ const discountedPrice = document.querySelector("#discounted-price")
 
 const productPrice = document.querySelector("#product-price")
 const selectedPrice = document.querySelector("#selected-price")
+const totalAll = document.querySelector("#total")
+const taxEl = document.querySelector("#tax")
+const shippingEl = document.querySelector("#shipping")
+
 
 
 console.log(bin);
@@ -79,22 +83,38 @@ let proPri = e.closest(".product").querySelector("#product-price")
   return totalProPri;
 }
 
-let SHIPPING = 30;
+let SHIPPING;
 let TAX = 1.18;
+shippingEl.textContent = 30;
 
 const calculateSelectedProduct = (totalProPri) =>{
   // product-price, shipping, tax, total, product-toplam, total toplam
-
-  let SHIPPING = 30;
+  
+  
   let TAX = 1.18;
   let FREE_SHIPPING_LIMIT = 3000;
 
  let total = document.querySelectorAll("#product-price")
  console.log(total);
+
  let newTotal = [...total].reduce((sum, item) =>sum +Number(item.textContent),0)
+ selectedPrice.textContent = newTotal.toFixed(2)
  console.log(newTotal);
 
+ if(newTotal < 3000){
+  selectedPrice.textContent = newTotal.toFixed(2) + SHIPPING
+  shippingEl.textContent = 30;
+ }
+ else{
+  SHIPPING= 0;
+  shippingEl.textContent = SHIPPING
+ }
+
+ taxEl.textContent = (selectedPrice.textContent * 0.18).toFixed(2);
+ totalAll.textContent = (selectedPrice.textContent * TAX).toFixed(2);
  console.log(newTotal);
+
+
   
 }
 
