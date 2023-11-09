@@ -50,7 +50,10 @@ products.addEventListener("click", (e) =>{
     
   }
   else if(e.target.classList.contains("fa-trash-can")){
+    calculateClear(e.target)
     e.target.closest(".product").remove()
+    calculateProduct(e.target)
+    
   }
 
 })
@@ -117,6 +120,18 @@ const calculateSelectedProduct = (totalProPri) =>{
 
   
 }
+
+
+function calculateClear(e){
+  console.log("fonskiyon çalıştı");
+  let removePro = e.closest(".product").querySelector("#product-price").textContent= 0;
+  console.log(removePro);
+  return removePro;
+ 
+}
+
+
+
 
 
 
